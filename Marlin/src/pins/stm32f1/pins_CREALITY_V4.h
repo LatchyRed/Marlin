@@ -60,7 +60,7 @@
 //
 #ifndef HAS_PIN_27_BOARD
   #define SERVO0_PIN                        PB0   // BLTouch OUT
-#else 
+#else
   #define SERVO0_PIN                        PC6
 #endif
 
@@ -132,8 +132,12 @@
 #define HEATER_0_PIN                        PA1   // HEATER1
 #define HEATER_BED_PIN                      PA2   // HOT BED
 
-#define FAN_PIN                             PA0   // FAN
-#define FAN_SOFT_PWM
+#ifndef FAN_PIN
+  #define FAN_PIN                           PA0   // FAN
+#endif
+#if PIN_EXISTS(FAN)
+  #define FAN_SOFT_PWM
+#endif
 
 //
 // SD Card

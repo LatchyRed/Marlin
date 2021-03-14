@@ -537,10 +537,10 @@
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
 #define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
-//#define CHAMBER_AUTO_FAN_TEMPERATURE 30
-//#define CHAMBER_AUTO_FAN_SPEED 255
-//#define COOLER_AUTO_FAN_TEMPERATURE 18
-//#define COOLER_AUTO_FAN_SPEED 255
+#define CHAMBER_AUTO_FAN_TEMPERATURE 30
+#define CHAMBER_AUTO_FAN_SPEED 255
+#define COOLER_AUTO_FAN_TEMPERATURE 18
+#define COOLER_AUTO_FAN_SPEED 255
 
 /**
  * Part-Cooling Fan Multiplexer
@@ -925,7 +925,7 @@
 // Increase the slowdown divisor for larger buffer sizes.
 #define SLOWDOWN
 #if ENABLED(SLOWDOWN)
-  #define SLOWDOWN_DIVISOR 16
+  #define SLOWDOWN_DIVISOR 2
 #endif
 
 /**
@@ -1161,7 +1161,7 @@
   #endif
 
   // BACK menu items keep the highlight at the top
-  #define TURBO_BACK_MENU_ITEM
+  //#define TURBO_BACK_MENU_ITEM
 
   // Add a mute option to the LCD menu
   //#define SOUND_MENU_ITEM
@@ -1361,10 +1361,10 @@
   //#define UTF_FILENAME_SUPPORT
 
   // This allows hosts to request long names for files and folders with M33
-  #define LONG_FILENAME_HOST_SUPPORT
+  //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
-  #define SCROLL_LONG_FILENAMES
+  //#define SCROLL_LONG_FILENAMES
 
   // Leave the heaters on after Stop Print (not recommended!)
   //#define SD_ABORT_NO_COOLDOWN
@@ -1494,7 +1494,7 @@
 
   // A bigger font is available for edit items. Costs 3120 bytes of PROGMEM.
   // Western only. Not available for Cyrillic, Kana, Turkish, Greek, or Chinese.
-  #define USE_BIG_EDIT_FONT
+  //#define USE_BIG_EDIT_FONT
 
   // A smaller font may be used on the Info Screen. Costs 2434 bytes of PROGMEM.
   // Western only. Not available for Cyrillic, Kana, Turkish, Greek, or Chinese.
@@ -1536,14 +1536,14 @@
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
-  //#define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
   //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling
-  #define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
-  #define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
-  #define STATUS_FAN_FRAMES 4       // :[0,1,2,3,4] Number of fan animation frames
+  //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
+  //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
+  //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
-  #define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
+  //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
 
   // Frivolous Game Options
   //#define MARLIN_BRICKOUT
@@ -2027,16 +2027,16 @@
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
   #define BLOCK_BUFFER_SIZE  8
 #elif ENABLED(SDSUPPORT)
-  #define BLOCK_BUFFER_SIZE 64
+  #define BLOCK_BUFFER_SIZE 16
 #else
-  #define BLOCK_BUFFER_SIZE 64
+  #define BLOCK_BUFFER_SIZE 16
 #endif
 
 // @section serial
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
-#define BUFSIZE 8
+#define BUFSIZE 4
 
 // Transmission to Host Buffer Size
 // To save 386 bytes of PROGMEM (and TX_BUFFER_SIZE+3 bytes of RAM) set to 0.
@@ -2051,12 +2051,12 @@
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-#define RX_BUFFER_SIZE 1024
+//#define RX_BUFFER_SIZE 1024
 
 #if RX_BUFFER_SIZE >= 1024
   // Enable to have the controller send XON/XOFF control characters to
   // the host to signal the RX buffer is becoming full.
-  #define SERIAL_XON_XOFF
+  //#define SERIAL_XON_XOFF
 #endif
 
 // Add M575 G-code to change the baud rate
